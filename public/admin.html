@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Área de Administração | Loja Peru</title>
+  
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO (Logo e Navegação) -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <a href="/" class="logo" id="logoLink">
+        <div class="peru-flag">
+          <div class="peru-flag-red"></div>
+          <div class="peru-flag-white"></div>
+          <div class="peru-flag-red"></div>
+        </div>
+        Loja <span>Peru</span>
+      </a>
+      
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/admin.html" class="active">Painel Admin</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+        </ul>
+      </nav>
+      
+      <div style="width: 100px;"></div> <!-- Alinhador -->
+    </div>
+  </header>
+
+  <!-- PAINEL PRINCIPAL DO ADMIN -->
+  <main class="main-container">
+    
+    <!-- Abas de Navegação Administrativa -->
+    <div class="admin-navigation-tabs">
+      <button class="admin-nav-tab-btn active" id="tabProductsBtn" onclick="switchAdminTab('products')">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" style="vertical-align: middle;">
+          <path d="M480-80 120-280v-400l360-200 360 200v400L480-80ZM180-642l300 167 300-167-300-167-300 167Zm360 224v282l240-133v-282L540-418Zm-120 282V-418L180-551v282l240 133Z"/>
+        </svg>
+        <span>Produtos</span>
+      </button>
+      <button class="admin-nav-tab-btn" id="tabOrdersBtn" onclick="switchAdminTab('orders')">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor" style="vertical-align: middle;">
+          <path d="M240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-560v-160H240v640h480v-480H520ZM240-800v160-160 640-640Z"/>
+        </svg>
+        <span>Pedidos</span>
+        <span class="admin-tab-badge" id="ordersTabBadge">0</span>
+      </button>
+    </div>
+
+    <!-- ABA 1: PRODUTOS -->
+    <div id="tabContentProducts" class="admin-tab-content active">
+      <h2 class="section-title" style="margin-top: 20px; margin-bottom: 20px;">Gerenciamento de Produtos</h2>
+      <p style="color: var(--text-muted); margin-bottom: 40px; font-size: 1.05rem;">Adicione novas categorias, produtos de vestuário ou tecnologia à vitrine da loja e gerencie o catálogo existente.</p>
+      
+      <div class="admin-layout">
+        <!-- Formulário de Cadastro e Categorias -->
+        <section class="admin-card" id="formAddProductSection">
+          
+          <!-- Bloco para Adicionar Categoria Dinâmica -->
+          <div class="category-creation-box">
+            <h3 class="admin-title" style="margin-bottom: 15px; border-bottom: none; padding-bottom: 0;">Nova Categoria</h3>
+            <form id="formAddCategory">
+              <div class="form-group" style="display: flex; gap: 10px; margin-bottom: 0;">
+                <input type="text" id="inputNewCategory" class="form-control" placeholder="Ex: Calçados" required>
+                <button type="submit" class="admin-submit-btn" style="width: auto; padding: 10px 20px; white-space: nowrap;">Criar</button>
+              </div>
+            </form>
+            <div id="categoryFeedback" style="margin-top: 10px; font-size: 0.85rem; font-weight: 600; display: none;"></div>
+          </div>
+
+          <!-- Cadastro de Produto -->
+          <h3 class="admin-title">Cadastrar Novo Produto</h3>
+          
+          <form id="formAddProduct" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="inputNome">Nome do Produto</label>
+              <input type="text" id="inputNome" name="nome" class="form-control" placeholder="Ex: Poncho Elegante Vermelho" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="selectCategoria">Categoria</label>
+              <select id="selectCategoria" name="categoria" class="form-control" required>
+                <!-- Carregadas dinamicamente via JS -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="inputCores">Cores Disponíveis (separadas por vírgula)</label>
+              <input type="text" id="inputCores" name="cores" class="form-control" placeholder="Ex: Preto, Vermelho, Nude" value="Padrão" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="inputPreco">Preço (R$)</label>
+              <input type="number" id="inputPreco" name="preco" class="form-control" placeholder="Ex: 249.90" step="0.01" min="0.01" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="textDescricao">Descrição do Produto</label>
+              <textarea id="textDescricao" name="descricao" class="form-control" placeholder="Descreva os detalhes do produto, material, diferenciais, etc..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+              <label for="fileImagemPrincipal">Foto Principal (Vitrine)</label>
+              <input type="file" id="fileImagemPrincipal" name="imagem_principal" class="form-control" accept="image/*" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="fileImagensAdicionais">Fotos Adicionais (Galeria - Máx: 5)</label>
+              <input type="file" id="fileImagensAdicionais" name="imagens_adicionais" class="form-control" accept="image/*" multiple>
+              <small style="color: var(--text-muted); margin-top: 5px; display: block;">Selecione vários arquivos segurando Ctrl.</small>
+            </div>
+            
+            <button type="submit" class="admin-submit-btn" id="btnSubmitProduct">Cadastrar Produto</button>
+          </form>
+          
+          <div id="formFeedback" style="margin-top: 20px; padding: 15px; border-radius: 8px; font-weight: 600; display: none;"></div>
+        </section>
+
+        <!-- Lista de Produtos Existentes -->
+        <section class="admin-card" id="listProductsSection">
+          <h3 class="admin-title">Produtos na Vitrine</h3>
+          
+          <div class="admin-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Foto</th>
+                  <th>Nome</th>
+                  <th>Preço</th>
+                  <th>Categoria</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTableBody">
+                <!-- Injetado dinamicamente via JS -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ABA 2: PEDIDOS -->
+    <div id="tabContentOrders" class="admin-tab-content">
+      <div class="admin-orders-section" style="margin-top: 20px;">
+        <h2 class="section-title">Pedidos Recebidos</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px; font-size: 1.05rem;">Acompanhe todos os pedidos realizados pelos clientes, com detalhes de entrega, referência e informações de vizinho.</p>
+
+        <!-- Estatísticas Rápidas -->
+        <div class="orders-stats-row" id="ordersStatsRow">
+          <div class="order-stat-card">
+            <div class="stat-number" id="statTotal">0</div>
+            <div class="stat-label">Total de Pedidos</div>
+          </div>
+          <div class="order-stat-card">
+            <div class="stat-number" id="statApproved" style="color: #2e7d32;">0</div>
+            <div class="stat-label">Aprovados</div>
+          </div>
+          <div class="order-stat-card">
+            <div class="stat-number" id="statPending" style="color: #f57f17;">0</div>
+            <div class="stat-label">Pendentes</div>
+          </div>
+        </div>
+
+        <!-- Filtros Rápidos de Pedidos -->
+        <div class="filter-tabs" id="orderFilterTabs" style="margin-bottom: 25px; border-bottom: none; padding-bottom: 0;">
+          <button class="filter-btn active" onclick="filterAdminOrders('todos', this)">Todos</button>
+          <button class="filter-btn" onclick="filterAdminOrders('Aprovado', this)">Aprovados</button>
+          <button class="filter-btn" onclick="filterAdminOrders('Em Preparação', this)">Em Preparação</button>
+          <button class="filter-btn" onclick="filterAdminOrders('Em Trânsito', this)">Em Trânsito</button>
+          <button class="filter-btn" onclick="filterAdminOrders('Entregue', this)">Entregues</button>
+        </div>
+
+        <!-- Lista de Pedidos -->
+        <div class="orders-list-container" id="ordersListContainer">
+          <div class="order-empty-state">
+            <div class="empty-icon">📦</div>
+            <h3>Carregando pedidos...</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Loja Peru</h3>
+        <p>A melhor união de vestuário artesanal de luxo e acessórios de tecnologia inovadores. A sua área de controle administrativo.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Acesso</h4>
+        <ul>
+          <li><a href="/">Voltar à Vitrine</a></li>
+          <li><a href="/carrinho.html">Ver Carrinho</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Suporte Admin</h4>
+        <p>📧 admin@lojaperu.com.br</p>
+        <p>📞 Ramal Interno: #900</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Loja Peru. Painel Administrativo do Sistema.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Carrega a lista de categorias do backend e atualiza o select
+    async function loadCategories() {
+      const select = document.getElementById('selectCategoria');
+      select.innerHTML = '<option value="">Carregando categorias...</option>';
+      
+      try {
+        const response = await fetch('/categorias');
+        if (!response.ok) throw new Error('Erro ao obter categorias');
+        const categories = await response.json();
+        
+        select.innerHTML = '';
+        categories.forEach(cat => {
+          const opt = document.createElement('option');
+          opt.value = cat;
+          opt.textContent = cat;
+          select.appendChild(opt);
+        });
+      } catch (err) {
+        console.error(err);
+        select.innerHTML = '<option value="Roupas">Roupas</option><option value="Acessórios">Acessórios</option>';
+      }
+    }
+
+    // Carrega e atualiza a tabela de produtos cadastrados
+    async function loadAdminProducts() {
+      const tbody = document.getElementById('adminProductsTableBody');
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Carregando produtos...</td></tr>';
+      
+      try {
+        const response = await fetch('/produtos');
+        if (!response.ok) throw new Error('Erro ao obter catálogo');
+        
+        const products = await response.json();
+        
+        tbody.innerHTML = '';
+        
+        if (products.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--text-muted);">Nenhum produto cadastrado na vitrine.</td></tr>';
+          return;
+        }
+        
+        products.forEach(prod => {
+          const formattedPrice = Number(prod.preco).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          });
+          
+          const tr = document.createElement('tr');
+          tr.id = `admin-row-${prod.id}`;
+          
+          tr.innerHTML = `
+            <td>
+              <img src="${prod.imagem_url}" alt="${prod.nome}" class="admin-prod-thumb">
+            </td>
+            <td style="font-weight: 600; font-size: 0.95rem;">${prod.nome}</td>
+            <td style="color: var(--red-primary); font-weight: 700;">${formattedPrice}</td>
+            <td><span class="product-category" style="font-size: 0.75rem; padding: 2px 8px; background: var(--nude-primary); border-radius: 4px;">${prod.categoria}</span></td>
+            <td>
+              <button class="btn-delete-prod" onclick="deleteProduct(${prod.id})" aria-label="Excluir produto">
+                <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="currentColor">
+                  <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h200v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                </svg>
+              </button>
+            </td>
+          `;
+          
+          tbody.appendChild(tr);
+        });
+      } catch (error) {
+        console.error(error);
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align: center; color: var(--red-primary);">⚠️ Falha ao obter produtos do servidor.</td></tr>';
+      }
+    }
+
+    // Exclui um produto do banco de dados/servidor
+    async function deleteProduct(id) {
+      if (!confirm('Deseja realmente remover este produto da vitrine da Loja Peru? Esta ação é irreversível.')) {
+        return;
+      }
+      
+      try {
+        const response = await fetch(`/produtos/${id}`, {
+          method: 'DELETE'
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'Erro na exclusão do produto');
+        }
+        
+        alert('Produto removido com sucesso!');
+        loadAdminProducts();
+      } catch (error) {
+        console.error(error);
+        alert(`Falha ao excluir produto: ${error.message}`);
+      }
+    }
+
+    // Envio do formulário de Nova Categoria (AJAX JSON)
+    document.getElementById('formAddCategory').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('inputNewCategory');
+      const feedback = document.getElementById('categoryFeedback');
+      const nome = input.value.trim();
+      
+      feedback.style.display = 'block';
+      feedback.style.color = 'var(--text-muted)';
+      feedback.textContent = 'Enviando...';
+      
+      try {
+        const response = await fetch('/categorias', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome })
+        });
+        const data = await response.json();
+        
+        if (!response.ok) throw new Error(data.error || 'Erro ao criar categoria');
+        
+        feedback.style.color = '#2e7d32';
+        feedback.textContent = '✅ Categoria adicionada!';
+        input.value = '';
+        loadCategories();
+        
+        setTimeout(() => { feedback.style.display = 'none'; }, 2000);
+      } catch (err) {
+        console.error(err);
+        feedback.style.color = 'var(--red-primary)';
+        feedback.textContent = `⚠️ Erro: ${err.message}`;
+      }
+    });
+
+    // Envio do formulário de cadastro de produto (AJAX Multipart)
+    document.getElementById('formAddProduct').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const form = e.target;
+      const feedback = document.getElementById('formFeedback');
+      const submitBtn = document.getElementById('btnSubmitProduct');
+      
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando Dados...';
+      
+      feedback.style.display = 'block';
+      feedback.style.backgroundColor = '#f5ebe0';
+      feedback.style.color = 'var(--text-dark)';
+      feedback.textContent = 'Cadastrando produto e enviando imagens para o servidor...';
+      
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('/produtos', {
+          method: 'POST',
+          body: formData
+        });
+        
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.details || data.error || 'Falha ao registrar produto');
+        }
+        
+        feedback.style.backgroundColor = '#e8f5e9';
+        feedback.style.color = '#2e7d32';
+        feedback.textContent = '✅ Produto cadastrado com sucesso e adicionado à vitrine!';
+        
+        form.reset();
+        document.getElementById('inputCores').value = 'Padrão';
+        loadAdminProducts();
+        
+      } catch (error) {
+        console.error(error);
+        feedback.style.backgroundColor = '#ffebee';
+        feedback.style.color = 'var(--red-primary)';
+        feedback.textContent = `❌ Falha ao cadastrar: ${error.message}`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Cadastrar Produto';
+      }
+    });
+
+    // ========== PAINEL DE PEDIDOS ==========
+    
+    function formatMoney(value) {
+      return Number(value).toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return 'N/A';
+      const d = new Date(dateStr);
+      if (isNaN(d.getTime())) return dateStr;
+      return d.toLocaleDateString('pt-BR', {
+        day: '2-digit', month: '2-digit', year: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    function toggleOrderCard(cardElement) {
+      cardElement.classList.toggle('expanded');
+    }
+
+    let allOrdersCached = [];
+    let currentOrdersFilter = 'todos';
+
+    async function loadAdminOrders() {
+      const container = document.getElementById('ordersListContainer');
+      
+      try {
+        const response = await fetch('/pedidos');
+        if (!response.ok) throw new Error('Erro ao obter pedidos');
+        
+        const orders = await response.json();
+        allOrdersCached = orders; // Salvar em cache
+        
+        // Atualizar estatísticas
+        const totalOrders = orders.length;
+        const approvedOrders = orders.filter(o => o.status === 'Aprovado').length;
+        const pendingOrders = orders.filter(o => o.status === 'Pendente' || o.status !== 'Aprovado').length;
+        
+        document.getElementById('statTotal').textContent = totalOrders;
+        document.getElementById('statApproved').textContent = approvedOrders;
+        document.getElementById('statPending').textContent = pendingOrders;
+        
+        // Atualizar badge da aba
+        document.getElementById('ordersTabBadge').textContent = totalOrders;
+        
+        renderAdminOrders(allOrdersCached, currentOrdersFilter);
+        
+      } catch (error) {
+        console.error('Erro ao carregar pedidos:', error);
+        container.innerHTML = `
+          <div class="order-empty-state">
+            <div class="empty-icon">⚠️</div>
+            <h3>Erro ao carregar pedidos</h3>
+            <p style="margin-top: 8px; color: var(--red-primary);">${error.message}</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderAdminOrders(orders, filter) {
+      const container = document.getElementById('ordersListContainer');
+      container.innerHTML = '';
+      
+      // Filtrar os pedidos
+      const filteredOrders = filter === 'todos' 
+        ? orders 
+        : orders.filter(o => o.status === filter);
+        
+      if (filteredOrders.length === 0) {
+        container.innerHTML = `
+          <div class="order-empty-state">
+            <div class="empty-icon">📦</div>
+            <h3>Nenhum pedido encontrado</h3>
+            <p style="margin-top: 8px;">Não há pedidos com o status "${filter === 'todos' ? 'Qualquer' : filter}".</p>
+          </div>
+        `;
+        return;
+      }
+      
+      filteredOrders.forEach(order => {
+        const isApproved = order.status === 'Aprovado';
+        const isPreparing = order.status === 'Em Preparação';
+        const isTransit = order.status === 'Em Trânsito';
+        const isDelivered = order.status === 'Entregue';
+        
+        let statusIcon = '🟡';
+        let statusClass = 'pending';
+        
+        if (isApproved) {
+          statusIcon = '🟢';
+          statusClass = 'approved';
+        } else if (isPreparing) {
+          statusIcon = '👨‍🍳';
+          statusClass = 'preparing';
+        } else if (isTransit) {
+          statusIcon = '🚚';
+          statusClass = 'transit';
+        } else if (isDelivered) {
+          statusIcon = '✅';
+          statusClass = 'delivered';
+        }
+        
+        const vizinhoPode = order.vizinho_pode_receber ? true : false;
+        
+        const card = document.createElement('div');
+        card.className = 'order-card expanded';
+        card.id = `order-card-${order.id}`;
+        
+        card.innerHTML = `
+          <div class="order-card-header" onclick="toggleOrderCard(this.parentElement)">
+            <span class="order-id-badge">#${order.id}</span>
+            <div class="order-client-info">
+              <span class="order-client-name">${order.cliente_nome || 'Cliente N/I'}</span>
+              <span class="order-client-cpf">${order.cliente_cpf || 'CPF não informado'}</span>
+            </div>
+            <span class="order-total">${formatMoney(order.total || 0)}</span>
+            <span class="order-status-badge ${statusClass}">${statusIcon} ${order.status || 'Pendente'}</span>
+            <span class="order-expand-icon">▼</span>
+          </div>
+          <div class="order-card-details">
+            <div class="order-details-grid">
+              <div class="order-detail-block">
+                <h4>📦 Produto</h4>
+                <p><strong>${order.produto_nome || 'Produto #' + order.produto_id}</strong></p>
+                <p>Quantidade: <span class="detail-highlight">${order.quantidade || 1}</span></p>
+                <p>Total: <span class="detail-highlight">${formatMoney(order.total || 0)}</span></p>
+              </div>
+              <div class="order-detail-block">
+                <h4>👤 Cliente</h4>
+                <p><strong>${order.cliente_nome || 'N/I'}</strong></p>
+                <p>CPF: ${order.cliente_cpf || 'N/I'}</p>
+                <p>Email: ${order.cliente_email || 'N/I'}</p>
+              </div>
+              <div class="order-detail-block">
+                <h4>📍 Endereço de Entrega</h4>
+                <p>${order.rua || 'N/I'}, Nº ${order.numero || 'S/N'}</p>
+                <p>${order.complemento ? 'Compl: ' + order.complemento : ''}</p>
+                <p>CEP: <span class="detail-highlight">${order.cep || 'N/I'}</span></p>
+                <p>Tipo: ${order.tipo_endereco || 'N/I'}</p>
+                ${order.referencia ? `<p style="margin-top: 8px;"><strong>Referência:</strong> ${order.referencia}</p>` : ''}
+              </div>
+              <div class="order-detail-block">
+                <h4>🏠 Entrega p/ Vizinho</h4>
+                <p><span class="neighbor-badge ${vizinhoPode ? 'yes' : 'no'}">${vizinhoPode ? '✅ Sim' : '❌ Não'}</span></p>
+                ${vizinhoPode && order.vizinho_nome ? `<p style="margin-top: 8px;"><strong>Nome:</strong> ${order.vizinho_nome}</p>` : ''}
+                ${vizinhoPode && order.vizinho_localizacao ? `<p><strong>Localização:</strong> ${order.vizinho_localizacao}</p>` : ''}
+              </div>
+            </div>
+            
+            <!-- Ações do Pedido -->
+            ${renderOrderActions(order)}
+            
+            <div style="margin-top: 15px; text-align: right; font-size: 0.8rem; color: var(--text-muted);">
+              Pedido realizado em: ${formatDate(order.criado_em)}
+            </div>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
+
+    function renderOrderActions(order) {
+      if (order.status === 'Aprovado') {
+        return `
+          <div class="order-action-row">
+            <button class="btn-order-action prepare" onclick="updateOrderStatus(${order.id}, 'Em Preparação')">
+              👨‍🍳 Iniciar Preparação
+            </button>
+          </div>
+        `;
+      } else if (order.status === 'Em Preparação') {
+        return `
+          <div class="order-action-row">
+            <button class="btn-order-action ship" onclick="updateOrderStatus(${order.id}, 'Em Trânsito')">
+              🚚 Enviar p/ Transportadora
+            </button>
+          </div>
+        `;
+      } else if (order.status === 'Em Trânsito') {
+        return `
+          <div class="order-action-row">
+            <button class="btn-order-action deliver" onclick="updateOrderStatus(${order.id}, 'Entregue')">
+              ✅ Confirmar Entrega
+            </button>
+          </div>
+        `;
+      }
+      return '';
+    }
+
+    async function updateOrderStatus(id, newStatus) {
+      if (!confirm(`Deseja alterar o status do pedido #${id} para "${newStatus}"?`)) {
+        return;
+      }
+
+      try {
+        const response = await fetch(`/pedidos/${id}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Erro ao atualizar status');
+
+        // Recarregar pedidos
+        loadAdminOrders();
+      } catch (err) {
+        console.error(err);
+        alert(`Falha ao atualizar status: ${err.message}`);
+      }
+    }
+
+    function filterAdminOrders(status, btn) {
+      currentOrdersFilter = status;
+      
+      const buttons = document.querySelectorAll('#orderFilterTabs .filter-btn');
+      buttons.forEach(b => b.classList.remove('active'));
+      
+      btn.classList.add('active');
+      
+      renderAdminOrders(allOrdersCached, status);
+    }
+
+    // Alterna entre as abas do Painel Administrativo
+    function switchAdminTab(tabName) {
+      document.getElementById('tabProductsBtn').classList.remove('active');
+      document.getElementById('tabOrdersBtn').classList.remove('active');
+      
+      document.getElementById('tabContentProducts').classList.remove('active');
+      document.getElementById('tabContentOrders').classList.remove('active');
+      
+      if (tabName === 'products') {
+        document.getElementById('tabProductsBtn').classList.add('active');
+        document.getElementById('tabContentProducts').classList.add('active');
+      } else if (tabName === 'orders') {
+        document.getElementById('tabOrdersBtn').classList.add('active');
+        document.getElementById('tabContentOrders').classList.add('active');
+        loadAdminOrders();
+      }
+    }
+
+    // Inicialização da Página
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCategories();
+      loadAdminProducts();
+      loadAdminOrders();
+    });
+
+    // Esconder header ao rolar para baixo no celular
+    (function() {
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('mainHeader');
+      if (!header) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+          lastScrollY = currentScrollY;
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

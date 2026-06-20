@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Privacidade e Proteção de Dados | Loja Peru</title>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    /* Estilos específicos de documentos jurídicos profissionais */
+    .doc-section {
+      padding: 60px 24px 100px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+    }
+
+    /* Navegação lateral fixa do documento (Table of Contents) */
+    .doc-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(221, 184, 146, 0.4);
+      padding: 24px;
+    }
+
+    .doc-sidebar h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--red-primary);
+      padding-bottom: 8px;
+    }
+
+    .doc-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .doc-nav-link {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+      line-height: 1.4;
+    }
+
+    .doc-nav-link:hover, .doc-nav-link.active {
+      color: var(--red-primary);
+      transform: translateX(4px);
+    }
+
+    /* Conteúdo do Documento */
+    .doc-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(221, 184, 146, 0.4);
+      box-shadow: var(--shadow-md);
+      padding: 50px;
+    }
+
+    .doc-header {
+      border-bottom: 1px solid rgba(221, 184, 146, 0.3);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .doc-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .doc-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .doc-content h3 {
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      scroll-margin-top: 100px; /* Evita que o cabeçalho sticky cubra o título ao rolar */
+    }
+
+    .doc-content p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    .doc-content ul, .doc-content ol {
+      margin-left: 24px;
+      margin-bottom: 24px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .doc-content li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .doc-content strong {
+      color: var(--text-dark);
+    }
+
+    /* Aviso de Simulação com Design Premium */
+    .legal-disclaimer-box {
+      background-color: rgba(200, 16, 46, 0.03);
+      border-left: 4px solid var(--red-primary);
+      border-radius: 4px 8px 8px 4px;
+      padding: 24px;
+      margin: 30px 0;
+    }
+
+    .legal-disclaimer-box h4 {
+      color: var(--red-primary);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .legal-disclaimer-box p {
+      color: var(--text-dark);
+      margin-bottom: 0;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    @media (max-width: 992px) {
+      .doc-section {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+      .doc-sidebar {
+        display: none; /* Ocultar a barra de navegação jurídica lateral em telas pequenas */
+      }
+      .doc-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <a href="/" class="logo" id="logoLink">
+        <div class="peru-flag">
+          <div class="peru-flag-red"></div>
+          <div class="peru-flag-white"></div>
+          <div class="peru-flag-red"></div>
+        </div>
+        Loja <span>Peru</span>
+      </a>
+      
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-right-actions">
+        <div id="accountHeaderArea">
+          <a href="/conta.html" class="account-btn" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span>Entrar</span>
+          </a>
+        </div>
+        <a href="/carrinho.html" class="cart-icon-container" id="cartButton" aria-label="Visualizar Carrinho">
+          <img src="/images/cart_icon.png" class="cart-icon" alt="">
+          <span>Carrinho</span>
+          <div class="cart-count" id="cartBadgeCount">0</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL (LAYOUT LATERAL JURÍDICO) -->
+  <main class="doc-section">
+    
+    <!-- Sumário do Documento -->
+    <aside class="doc-sidebar">
+      <h4>Navegação</h4>
+      <nav aria-label="Seções do documento">
+        <ul class="doc-nav-list">
+          <li><a href="#aviso-inicial" class="doc-nav-link active">Aviso Importante</a></li>
+          <li><a href="#coleta" class="doc-nav-link">1. Coleta de Dados</a></li>
+          <li><a href="#finalidade" class="doc-nav-link">2. Finalidade do Tratamento</a></li>
+          <li><a href="#compartilhamento" class="doc-nav-link">3. Compartilhamento</a></li>
+          <li><a href="#armazenamento" class="doc-nav-link">4. Armazenamento Seguro</a></li>
+          <li><a href="#incidentes" class="doc-nav-link">5. Incidentes e Isenções</a></li>
+          <li><a href="#titular" class="doc-nav-link">6. Direitos do Titular</a></li>
+          <li><a href="#exclusao" class="doc-nav-link">7. Exclusão de Registros</a></li>
+          <li><a href="#contato" class="doc-nav-link">8. Contato e Suporte</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Cartão com Texto do Contrato -->
+    <article class="doc-card">
+      <div class="doc-header">
+        <h1 class="doc-title">Política de Privacidade</h1>
+        <p class="doc-subtitle">Loja Peru E-Commerce | Vigência a partir de 20 de Junho de 2026</p>
+      </div>
+
+      <section class="doc-content">
+        <p id="aviso-inicial">Esta Política de Privacidade estabelece as diretrizes e regras relativas ao tratamento, processamento, coleta e proteção dos dados pessoais obtidos por meio do acesso e uso da plataforma digital da Loja Peru ("Loja"). Atuamos em conformidade com as diretrizes da Lei Geral de Proteção de Dados (LGPD - Lei nº 13.709/2018) da República Federativa do Brasil.</p>
+
+        <div class="legal-disclaimer-box">
+          <h4>
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+            AVISO SOBRE INSERÇÃO DE DADOS EM AMBIENTE DE TESTES
+          </h4>
+          <p>Esta plataforma constitui uma aplicação web com fins exclusivamente demonstrativos operando em modo de teste e desenvolvimento. Todos os dados cadastrais (CPFs, nomes, e-mails, endereços de entrega) e dados de pagamento inseridos no sistema são armazenados de forma isolada na infraestrutura local do servidor e no banco de dados local. Recomendamos enfaticamente que os Usuários utilizem apenas dados fictícios de teste. Não insira senhas de uso real ou dados bancários/financeiros reais ativos.</p>
+        </div>
+
+        <h3 id="coleta">1. Categorias de Dados Pessoais Coletados</h3>
+        <p>A Loja Peru realiza a coleta das seguintes categorias de informações pessoais fornecidas diretamente de forma voluntária pelo Usuário:</p>
+        <ul>
+          <li><strong>Dados Identificadores:</strong> Nome completo, endereço de correio eletrônico (e-mail) e Cadastro de Pessoas Físicas (CPF).</li>
+          <li><strong>Dados de Comunicação:</strong> Número de telefone celular e/ou residencial.</li>
+          <li><strong>Dados Logísticos para Entrega:</strong> Código de Endereçamento Postal (CEP), nome do logradouro (rua/avenida), número, complemento, ponto de referência geográfica e autorizações expressas para entrega a terceiros (incluindo nome e descrição de localização de vizinho receptor).</li>
+          <li><strong>Dados de Sessão e Cookies:</strong> Logs locais de navegação armazenados na memória local do navegador (`localStorage`) para persistência de tokens temporários de login e dados de itens mantidos no carrinho de compras.</li>
+        </ul>
+
+        <h3 id="finalidade">2. Finalidade Legítima do Tratamento de Dados</h3>
+        <p>As informações pessoais coletadas são tratadas pela Loja Peru sob o amparo legal do cumprimento de obrigações contratuais e execução de procedimentos preliminares (Art. 7º, V da LGPD), possuindo as seguintes finalidades:</p>
+        <ul>
+          <li>Processar o cadastro e garantir o acesso do Usuário à área restrita do cliente.</li>
+          <li>Simular operações de compra e checkout transparente, alimentando o painel administrativo de pedidos.</li>
+          <li>Realizar validações matemáticas de conformidade dos CPFs digitados de modo a mitigar a criação de cadastros corrompidos no sistema.</li>
+          <li>Prover suporte ao Usuário em caso de interações simuladas ou requisição de exclusão de conta.</li>
+        </ul>
+
+        <h3 id="compartilhamento">3. Compartilhamento e Transferência de Informações</h3>
+        <p>A Loja Peru assegura que <strong>não vende, aluga, cede ou compartilha</strong> dados pessoais de seus Usuários com terceiros para fins comerciais, publicitários ou de marketing. O compartilhamento de dados ocorre única e exclusivamente com:</p>
+        <ul>
+          <li>A API de testes do gateway de pagamentos (Mercado Pago Sandbox) para viabilizar a emulação técnica de checkout.</li>
+          <li>Autoridades públicas judiciais ou administrativas competentes, mediante prévia notificação, intimação ou mandado judicial, nos termos da lei.</li>
+        </ul>
+
+        <h3 id="armazenamento">4. Medidas de Armazenamento Seguro e Criptografia</h3>
+        <p>Todos os dados pessoais coletados são guardados de forma segura em ambiente de servidor, adotando as seguintes salvaguardas tecnológicas:</p>
+        <ul>
+          <li><strong>Hashing e Salting de Senhas:</strong> A Loja Peru não armazena senhas em texto puro. As credenciais de acesso são criptografadas utilizando uma função de dispersão criptográfica segura (SHA-256) combinada com um *salt* criptográfico aleatório gerado individualmente no momento do cadastro do Usuário. Essa técnica impede a revelação das credenciais mesmo em caso de acessos indevidos diretos à base de dados.</li>
+          <li><strong>Transmissão de Sessões:</strong> A autenticação é regida por tokens de sessão temporários, transmitidos de forma segura e anexados de forma isolada às requisições do navegador.</li>
+        </ul>
+
+        <h3 id="incidentes">5. Cláusula de Isenção de Responsabilidade por Incidentes Cibernéticos</h3>
+        <p>O Usuário reconhece e concorda que a segurança de ambientes conectados à rede mundial de computadores não é absoluta. Em virtude disso, a Loja Peru e seus desenvolvedores:</p>
+        <ul>
+          <li><strong>Isenção por Invasões de Terceiros:</strong> Se eximem de qualquer responsabilidade civil ou criminal decorrente de incidentes de segurança, vazamentos ou subtração de dados causados por **ataques virtuais de hackers/crackers de alta complexidade**, que explorem brechas técnicas fora do controle razoável e diligente do sistema, desde que a Loja tenha atuado em estrito cumprimento dos parâmetros de segurança descritos neste Contrato.</li>
+          <li><strong>Culpa Exclusiva do Usuário:</strong> Não respondem por desvios de informações causados por imprudência do próprio Usuário, incluindo o uso de computadores públicos infectados, senhas fracas ou compartilhamento de credenciais de login com terceiros.</li>
+        </ul>
+
+        <h3 id="titular">6. Direitos do Titular dos Dados (LGPD)</h3>
+        <p>Como Titular dos dados pessoais sob a LGPD, o Usuário possui o direito de, a qualquer momento, mediante requisição direta ao canal de suporte da loja:</p>
+        <ul>
+          <li>Confirmar o processamento e obter acesso aos dados pessoais mantidos pela Loja.</li>
+          <li>Requerer a retificação imediata de dados cadastrais incompletos, inexatos ou desatualizados.</li>
+          <li>Bloquear ou requerer a eliminação completa de seus dados pessoais em nosso banco de dados.</li>
+        </ul>
+
+        <h3 id="exclusao">7. Exclusão e Eliminação Definitiva dos Registros</h3>
+        <p>O Usuário pode, de forma autônoma, requerer o descarte definitivo de todas as suas informações em nossa base de dados. Para fins de demonstração, o encerramento de sessão (Logout) apaga os tokens locais e, mediante contato com o e-mail de suporte, o Usuário pode requerer a exclusão completa e permanente do seu registro de cliente de nossa tabela do MySQL, eliminando qualquer histórico de interações gerado.</p>
+
+        <h3 id="contato">8. Canal de Comunicação e Suporte</h3>
+        <p>Para exercer os seus direitos garantidos pela LGPD ou obter esclarecimentos sobre as políticas de segurança da plataforma, o Usuário poderá enviar correspondência eletrônica ao nosso encarregado de proteção de dados no e-mail: <strong>suporte@lojaperu.com.br</strong>.</p>
+      </section>
+    </article>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Loja Peru</h3>
+        <p>A melhor união de vestuário artesanal de luxo e acessórios de tecnologia inovadores. A sua experiência de compra inteligente.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+          <li><a href="/termos.html">Termos de Serviço</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Fale Conosco</h4>
+        <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+        <p>📧 suporte@lojaperu.com.br</p>
+        <p>📞 (11) 99999-8888</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Loja Peru. Todos os direitos reservados. Projeto Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Gerenciar estado de autenticação no header
+    function updateAccountHeader() {
+      const cliente = JSON.parse(localStorage.getItem('loja_peru_cliente'));
+      const area = document.getElementById('accountHeaderArea');
+      
+      if (cliente && cliente.nome_completo) {
+        const primeiroNome = cliente.nome_completo.split(' ')[0];
+        area.innerHTML = `
+          <a href="/conta.html" class="account-btn account-logged" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span class="account-user-name">${primeiroNome}</span>
+          </a>
+          <button class="btn-logout" onclick="logoutUser()" title="Sair da conta">Sair</button>
+        `;
+      }
+    }
+
+    function logoutUser() {
+      const token = localStorage.getItem('loja_peru_token');
+      if (token) {
+        fetch('/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': token }
+        }).catch(() => {});
+      }
+      localStorage.removeItem('loja_peru_token');
+      localStorage.removeItem('loja_peru_cliente');
+      location.reload();
+    }
+
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('loja_peru_cart')) || [];
+      const badge = document.getElementById('cartBadgeCount');
+      if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + Number(item.quantidade), 0);
+        badge.textContent = totalItems;
+      }
+    }
+
+    // Gerenciar a navegação ativa no sumário lateral ao rolar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      updateAccountHeader();
+
+      const links = document.querySelectorAll('.doc-nav-link');
+      const headings = document.querySelectorAll('.doc-content h3, #aviso-inicial');
+
+      window.addEventListener('scroll', () => {
+        let currentActive = '';
+        headings.forEach(heading => {
+          const top = heading.offsetTop;
+          if (window.scrollY >= top - 120) {
+            currentActive = heading.getAttribute('id');
+          }
+        });
+
+        if (currentActive) {
+          links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentActive}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

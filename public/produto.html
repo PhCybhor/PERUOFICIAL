@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Produto | Loja Peru</title>
+  
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <!-- CABEÇALHO (Logo, Menu e Carrinho) -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <a href="/" class="logo" id="logoLink">
+        <div class="peru-flag">
+          <div class="peru-flag-red"></div>
+          <div class="peru-flag-white"></div>
+          <div class="peru-flag-red"></div>
+        </div>
+        Loja <span>Peru</span>
+      </a>
+      
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-right-actions">
+        <div id="accountHeaderArea">
+          <a href="/conta.html" class="account-btn" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span>Entrar</span>
+          </a>
+        </div>
+        <a href="/carrinho.html" class="cart-icon-container" id="cartButton" aria-label="Visualizar Carrinho">
+          <img src="/images/cart_icon.png" class="cart-icon" alt="">
+          <span>Carrinho</span>
+          <div class="cart-count" id="cartBadgeCount">0</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO DE DETALHES DO PRODUTO -->
+  <main class="main-container product-details-container">
+    <div class="details-layout" id="detailsLayoutContainer">
+      
+      <!-- Lado Esquerdo: Galeria e Miniaturas -->
+      <section class="details-gallery">
+        <div class="main-image-container">
+          <img src="" alt="Imagem Principal do Produto" class="main-image" id="detailsMainImage">
+        </div>
+        
+        <div class="thumbnails-wrapper">
+          <div class="thumbnails-container" id="detailsThumbnailsList">
+            <!-- Injetadas via JS -->
+          </div>
+        </div>
+        
+        <!-- Disclaimer de Imagem de Referência -->
+        <div class="disclaimer-alert" id="disclaimerWarning">
+          ⚠️ <strong>Imagens de Referência:</strong> As imagens acima servem apenas como referência visual de estilo e design do produto. Nossas peças e acessórios de tecnologia são de alta fidelidade e podem sofrer leves variações de textura e tonalidade de acordo com a fabricação.
+        </div>
+      </section>
+
+      <!-- Lado Direito: Informações e Ações de Compra -->
+      <section class="details-info" id="detailsInfoPanel">
+        <span class="details-category" id="detailsCategory">Categoria</span>
+        <h1 class="details-name" id="detailsName">Carregando Nome do Produto...</h1>
+        
+        <!-- Avaliações Simuladas baseadas no Screenshot fornecido -->
+        <div class="ratings-row">
+          <span class="stars" aria-label="Avaliação de 4.8 estrelas">★ 4.8</span>
+          <span class="review-count">5,3 mil Avaliações</span>
+        </div>
+        
+        <div class="details-price" id="detailsPrice">R$ 0,00</div>
+        
+        <hr class="details-divider">
+        
+        <!-- Seleção de Cores Simulado do Screenshot (Dinâmico) -->
+        <div class="option-section">
+          <div class="option-title">Cor</div>
+          <div class="option-btns" id="colorSelectorOptions">
+            <!-- Injetado dinamicamente via JS -->
+          </div>
+        </div>
+        
+        <!-- Quantidade Selector -->
+        <div class="option-section">
+          <div class="option-title">Quantidade</div>
+          <div class="qty-control">
+            <button class="qty-btn" id="btnQtyMinus" aria-label="Diminuir quantidade">-</button>
+            <span class="qty-val" id="qtyDisplayValue">1</span>
+            <button class="qty-btn" id="btnQtyPlus" aria-label="Aumentar quantidade">+</button>
+          </div>
+        </div>
+        
+        <!-- Botões de Compra rápidos -->
+        <div class="action-buttons">
+          <button class="action-btn action-btn-cart" id="btnAddToCart">
+            <img src="/images/cart_icon.png" class="details-cart-icon" alt="">
+            Adicionar ao Carrinho
+          </button>
+          <button class="action-btn action-btn-buy" id="btnBuyNow">
+            Comprar Agora
+          </button>
+        </div>
+      </section>
+    </div>
+    
+    <!-- Descrição Detalhada inferior -->
+    <section class="details-desc-section" id="descriptionSection">
+      <h3>Descrição Detalhada</h3>
+      <p id="detailsDescription" style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 800px;">Carregando detalhes adicionais do produto...</p>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Loja Peru</h3>
+        <p>A melhor união de vestuário artesanal de luxo e acessórios de tecnologia inovadores. A sua experiência de compra inteligente.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+          <li><a href="/termos.html">Termos de Serviço</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Fale Conosco</h4>
+        <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+        <p>📧 suporte@lojaperu.com.br</p>
+        <p>📞 (11) 99999-8888</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Loja Peru. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification para Feedback Visual -->
+  <div id="toastNotification" style="position: fixed; bottom: 20px; right: 20px; background-color: #C8102E; color: white; padding: 12px 24px; border-radius: 8px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.2); display: none; z-index: 2000; transform: translateY(100px); transition: transform 0.3s ease-out;">
+    Produto adicionado ao carrinho! 🛒
+  </div>
+
+  <script>
+    let currentProduct = null;
+    let selectedQuantity = 1;
+
+    // Obtém ID do produto a partir da URL (?id=X)
+    function getProductIdFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('id');
+    }
+
+    // Carregar carrinho local e atualizar badge
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('loja_peru_cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantidade, 0);
+      document.getElementById('cartBadgeCount').textContent = totalItems;
+    }
+
+    // Exibe notificação de toast
+    function showToast(message) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = message;
+      toast.style.display = 'block';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(0)';
+      }, 50);
+      
+      setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        setTimeout(() => {
+          toast.style.display = 'none';
+        }, 300);
+      }, 2500);
+    }
+
+    // Configura controle de quantidades
+    function setupQuantityControls() {
+      const minus = document.getElementById('btnQtyMinus');
+      const plus = document.getElementById('btnQtyPlus');
+      const display = document.getElementById('qtyDisplayValue');
+      
+      minus.addEventListener('click', () => {
+        if (selectedQuantity > 1) {
+          selectedQuantity--;
+          display.textContent = selectedQuantity;
+        }
+      });
+      
+      plus.addEventListener('click', () => {
+        selectedQuantity++;
+        display.textContent = selectedQuantity;
+      });
+    }
+
+    // Salva o produto selecionado no LocalStorage do carrinho
+    function addCurrentToCart(goToCart = false) {
+      if (!currentProduct) return;
+      
+      let cart = JSON.parse(localStorage.getItem('loja_peru_cart')) || [];
+      const existingItem = cart.find(item => item.id === currentProduct.id);
+      
+      // Captura a cor selecionada se houver opções
+      const activeColorBtn = document.querySelector('#colorSelectorOptions .option-btn.active');
+      const selectedColor = activeColorBtn ? activeColorBtn.textContent : 'Padrão';
+      
+      if (existingItem) {
+        existingItem.quantidade += selectedQuantity;
+      } else {
+        cart.push({
+          id: currentProduct.id,
+          nome: `${currentProduct.nome} (${selectedColor})`,
+          preco: currentProduct.preco,
+          imagem_url: currentProduct.imagem_url,
+          quantidade: selectedQuantity
+        });
+      }
+      
+      localStorage.setItem('loja_peru_cart', JSON.stringify(cart));
+      updateCartBadge();
+      
+      if (goToCart) {
+        window.location.href = '/carrinho.html';
+      } else {
+        showToast(`${selectedQuantity}x ${currentProduct.nome} adicionado(s) ao carrinho! 🛒`);
+      }
+    }
+
+    // Busca dados do produto no servidor
+    async function loadProductDetails() {
+      const id = getProductIdFromUrl();
+      if (!id) {
+        window.location.href = '/';
+        return;
+      }
+
+      try {
+        const response = await fetch(`/produtos/${id}`);
+        if (!response.ok) throw new Error('Produto não localizado');
+        
+        currentProduct = await response.json();
+        
+        // Preenche os dados nos campos
+        document.getElementById('detailsName').textContent = currentProduct.nome;
+        document.getElementById('detailsCategory').textContent = currentProduct.categoria;
+        document.getElementById('detailsDescription').textContent = currentProduct.descricao;
+        
+        const formattedPrice = Number(currentProduct.preco).toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        });
+        document.getElementById('detailsPrice').textContent = formattedPrice;
+
+        // Renderiza cores dinâmicas baseadas na coluna cores
+        const colorContainer = document.getElementById('colorSelectorOptions');
+        colorContainer.innerHTML = '';
+        
+        const coresList = (currentProduct.cores || 'Padrão')
+          .split(',')
+          .map(c => c.trim())
+          .filter(c => c.length > 0);
+          
+        coresList.forEach((cor, index) => {
+          const btn = document.createElement('button');
+          btn.className = `option-btn ${index === 0 ? 'active' : ''}`;
+          btn.type = 'button';
+          btn.textContent = cor;
+          
+          btn.addEventListener('click', (e) => {
+            document.querySelectorAll('#colorSelectorOptions .option-btn').forEach(b => b.classList.remove('active'));
+            e.target.classList.add('active');
+          });
+          
+          colorContainer.appendChild(btn);
+        });
+
+        // Galeria de imagens
+        const mainImg = document.getElementById('detailsMainImage');
+        const thumbsContainer = document.getElementById('detailsThumbnailsList');
+        
+        thumbsContainer.innerHTML = '';
+        const imageList = currentProduct.imagens || [currentProduct.imagem_url];
+        mainImg.src = imageList[0];
+        mainImg.alt = currentProduct.nome;
+        
+        imageList.forEach((imgUrl, index) => {
+          const thumbCard = document.createElement('div');
+          thumbCard.className = `thumbnail-card ${index === 0 ? 'active' : ''}`;
+          thumbCard.innerHTML = `<img src="${imgUrl}" alt="${currentProduct.nome} miniatura ${index + 1}">`;
+          
+          thumbCard.addEventListener('click', () => {
+            document.querySelectorAll('.thumbnail-card').forEach(c => c.classList.remove('active'));
+            thumbCard.classList.add('active');
+            
+            mainImg.style.opacity = '0.3';
+            setTimeout(() => {
+              mainImg.src = imgUrl;
+              mainImg.style.opacity = '1';
+            }, 150);
+          });
+          
+          thumbsContainer.appendChild(thumbCard);
+        });
+
+      } catch (error) {
+        console.error(error);
+        document.getElementById('detailsLayoutContainer').innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 80px; color: var(--red-primary);">
+            <h2>⚠️ Erro ao carregar detalhes do produto.</h2>
+            <p style="margin-top: 15px;"><a href="/" class="btn-back" style="display: inline-block; background: var(--red-primary); color: white; padding: 10px 20px; border-radius: 30px;">Voltar à Vitrine</a></p>
+          </div>
+        `;
+      }
+    }
+
+    // Gerenciar estado de autenticação no header
+    function updateAccountHeader() {
+      const cliente = JSON.parse(localStorage.getItem('loja_peru_cliente'));
+      const area = document.getElementById('accountHeaderArea');
+      
+      if (cliente && cliente.nome_completo) {
+        const primeiroNome = cliente.nome_completo.split(' ')[0];
+        area.innerHTML = `
+          <a href="/conta.html" class="account-btn account-logged" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span class="account-user-name">${primeiroNome}</span>
+          </a>
+          <button class="btn-logout" onclick="logoutUser()" title="Sair da conta">Sair</button>
+        `;
+      }
+    }
+
+    function logoutUser() {
+      const token = localStorage.getItem('loja_peru_token');
+      if (token) {
+        fetch('/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': token }
+        }).catch(() => {});
+      }
+      localStorage.removeItem('loja_peru_token');
+      localStorage.removeItem('loja_peru_cliente');
+      location.reload();
+    }
+
+    // Inicialização da Página
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProductDetails();
+      setupQuantityControls();
+      updateCartBadge();
+      updateAccountHeader();
+      
+      document.getElementById('btnAddToCart').addEventListener('click', () => addCurrentToCart(false));
+      document.getElementById('btnBuyNow').addEventListener('click', () => addCurrentToCart(true));
+    });
+
+    // Esconder header ao rolar para baixo no celular
+    (function() {
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('mainHeader');
+      if (!header) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+          lastScrollY = currentScrollY;
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>

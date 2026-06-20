@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos e Condições Gerais de Uso | Loja Peru</title>
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    /* Estilos específicos de documentos jurídicos profissionais */
+    .doc-section {
+      padding: 60px 24px 100px 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 40px;
+    }
+
+    /* Navegação lateral fixa do documento (Table of Contents) */
+    .doc-sidebar {
+      position: sticky;
+      top: 100px;
+      height: fit-content;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(221, 184, 146, 0.4);
+      padding: 24px;
+    }
+
+    .doc-sidebar h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 2px solid var(--red-primary);
+      padding-bottom: 8px;
+    }
+
+    .doc-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .doc-nav-link {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition);
+      display: block;
+      line-height: 1.4;
+    }
+
+    .doc-nav-link:hover, .doc-nav-link.active {
+      color: var(--red-primary);
+      transform: translateX(4px);
+    }
+
+    /* Conteúdo do Documento */
+    .doc-card {
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(221, 184, 146, 0.4);
+      box-shadow: var(--shadow-md);
+      padding: 50px;
+    }
+
+    .doc-header {
+      border-bottom: 1px solid rgba(221, 184, 146, 0.3);
+      padding-bottom: 30px;
+      margin-bottom: 40px;
+    }
+
+    .doc-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .doc-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .doc-content h3 {
+      font-size: 1.25rem;
+      color: var(--text-dark);
+      margin-top: 40px;
+      margin-bottom: 15px;
+      font-weight: 700;
+      scroll-margin-top: 100px; /* Evita que o cabeçalho sticky cubra o título ao rolar */
+    }
+
+    .doc-content p {
+      color: var(--text-muted);
+      font-size: 1.02rem;
+      line-height: 1.75;
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    .doc-content ul, .doc-content ol {
+      margin-left: 24px;
+      margin-bottom: 24px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .doc-content li {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .doc-content strong {
+      color: var(--text-dark);
+    }
+
+    /* Aviso de Simulação com Design Premium */
+    .legal-disclaimer-box {
+      background-color: rgba(200, 16, 46, 0.03);
+      border-left: 4px solid var(--red-primary);
+      border-radius: 4px 8px 8px 4px;
+      padding: 24px;
+      margin: 30px 0;
+    }
+
+    .legal-disclaimer-box h4 {
+      color: var(--red-primary);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .legal-disclaimer-box p {
+      color: var(--text-dark);
+      margin-bottom: 0;
+      font-size: 0.98rem;
+      line-height: 1.65;
+      font-weight: 500;
+    }
+
+    @media (max-width: 992px) {
+      .doc-section {
+        grid-template-columns: 1fr;
+        padding-top: 40px;
+      }
+      .doc-sidebar {
+        display: none; /* Ocultar a barra de navegação jurídica lateral em telas pequenas */
+      }
+      .doc-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <a href="/" class="logo" id="logoLink">
+        <div class="peru-flag">
+          <div class="peru-flag-red"></div>
+          <div class="peru-flag-white"></div>
+          <div class="peru-flag-red"></div>
+        </div>
+        Loja <span>Peru</span>
+      </a>
+      
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+        </ul>
+      </nav>
+      
+      <div class="header-right-actions">
+        <div id="accountHeaderArea">
+          <a href="/conta.html" class="account-btn" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span>Entrar</span>
+          </a>
+        </div>
+        <a href="/carrinho.html" class="cart-icon-container" id="cartButton" aria-label="Visualizar Carrinho">
+          <img src="/images/cart_icon.png" class="cart-icon" alt="">
+          <span>Carrinho</span>
+          <div class="cart-count" id="cartBadgeCount">0</div>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO PRINCIPAL (LAYOUT LATERAL JURÍDICO) -->
+  <main class="doc-section">
+    
+    <!-- Sumário do Documento -->
+    <aside class="doc-sidebar">
+      <h4>Navegação</h4>
+      <nav aria-label="Seções do documento">
+        <ul class="doc-nav-list">
+          <li><a href="#aviso-inicial" class="doc-nav-link active">Aviso Importante</a></li>
+          <li><a href="#glossario" class="doc-nav-link">1. Glossário e Definições</a></li>
+          <li><a href="#adesao" class="doc-nav-link">2. Adesão Contractual</a></li>
+          <li><a href="#ambiente-teste" class="doc-nav-link">3. Ambiente de Simulação</a></li>
+          <li><a href="#cadastro" class="doc-nav-link">4. Cadastro e Dados de Acesso</a></li>
+          <li><a href="#devolucoes" class="doc-nav-link">5. Direito de Arrependimento</a></li>
+          <li><a href="#responsabilidades" class="doc-nav-link">6. Isenção de Responsabilidades</a></li>
+          <li><a href="#propriedade" class="doc-nav-link">7. Propriedade Intelectual</a></li>
+          <li><a href="#foro" class="doc-nav-link">8. Foro e Jurisdição</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Cartão com Texto do Contrato -->
+    <article class="doc-card">
+      <div class="doc-header">
+        <h1 class="doc-title">Termos e Condições Gerais de Uso</h1>
+        <p class="doc-subtitle">Loja Peru E-Commerce | Vigência a partir de 20 de Junho de 2026</p>
+      </div>
+
+      <section class="doc-content">
+        <p id="aviso-inicial">Estes Termos e Condições Gerais de Uso ("Contrato") regem a relação jurídica entre a plataforma digital da Loja Peru ("Loja") e qualquer pessoa física ou jurídica que acesse ou utilize a plataforma ("Usuário"). Ao navegar ou efetuar o cadastro na plataforma, o Usuário expressa sua aceitação incondicional de todas as cláusulas do presente instrumento.</p>
+
+        <div class="legal-disclaimer-box">
+          <h4>
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg>
+            DISCLAIMER DE INTEGRAL SIMULAÇÃO OPERACIONAL
+          </h4>
+          <p>Esta plataforma constitui uma aplicação web estritamente demonstrativa destinada à exibição e validação técnica de fluxos de e-commerce e integrações transparente de checkout. O Usuário reconhece e concorda expressamente que todas as interações de compra, geração de cobranças fictícias (via cartão ou Pix em modo de testes / Sandbox do Mercado Pago), bem como registros de frete e prazos são fictícios. Nenhuma cobrança financeira real é realizada pela plataforma e nenhuma mercadoria física ou serviço será despachado em razão dos pedidos gerados.</p>
+        </div>
+
+        <h3 id="glossario">1. Glossário e Definições</h3>
+        <p>Para fins de interpretação deste Contrato, as palavras abaixo listadas terão as seguintes definições:</p>
+        <ul>
+          <li><strong>Usuário:</strong> Qualquer pessoa física, plenamente capaz civilmente sob a legislação brasileira, que acesse, navegue ou faça uso dos recursos da plataforma.</li>
+          <li><strong>Plataforma:</strong> O site web hospedado sob os domínios da Loja Peru, abrangendo seu front-end, back-end de simulação e APIs integradas.</li>
+          <li><strong>Transações Fictícias:</strong> Simulações de compra geradas sem efeitos patrimoniais ou civis.</li>
+          <li><strong>Modo Sandbox:</strong> Ambiente de testes isolado que emula o processador de pagamentos do Mercado Pago sem liquidação financeira.</li>
+        </ul>
+
+        <h3 id="adesao">2. Adesão Contractual</h3>
+        <p>O presente instrumento constitui contrato de adesão vinculante e regulamenta a licença temporária de uso da plataforma. O Usuário declara e garante que possui capacidade civil e legitimidade jurídica para anuir com os presentes termos. A discordância com qualquer disposição contida neste termo cessa de imediato o direito de uso da interface.</p>
+
+        <h3 id="ambiente-teste">3. Cláusula de Isenção de Oferta e Entrega no Ambiente de Teste</h3>
+        <p>Em conformidade com a autonomia da vontade e boa-fé objetiva que regem os contratos (Arts. 113 e 422 do Código Civil brasileiro), o Usuário reconhece que a Loja Peru opera sob finalidade 100% demonstrativa.</p>
+        <ul>
+          <li><strong>Inexistência de Obrigação de Fazer ou Dar:</strong> A Loja Peru fica integralmente isenta de obrigações de entrega física de qualquer peça de vestuário ou acessório constante na vitrine virtual, bem como da restituição de qualquer valor monetário simulado em tela.</li>
+          <li><strong>Renúncia de Direitos e Pleitos Judiciais:</strong> O Usuário concorda em <strong>renunciar a qualquer pretensão de ação judicial</strong> de natureza civil ou consumerista fundada em direito à entrega forçada de mercadorias (Art. 35 do CDC) ou indenização por lucros cessantes, danos emergentes, frustração de expectativa de compra ou danos morais em razão de transações finalizadas neste site.</li>
+        </ul>
+
+        <h3 id="cadastro">4. Cadastro, Credenciais de Acesso e Fraude</h3>
+        <p>Para interagir com o fluxo de pedidos simulados, o Usuário poderá criar uma conta de acesso.</p>
+        <ul>
+          <li>O Usuário compromete-se a prestar informações cadastrais inteiramente fidedignas e atualizadas.</li>
+          <li><strong>Exclusão por Falsidade de Dados:</strong> O uso de CPFs inválidos, gerados artificialmente ou pertencentes a terceiros sem a devida autorização, constitui violação contratual grave e potencial crime de falsidade ideológica (Art. 299 do Código Penal). A Loja reserva-se o direito de excluir imediatamente perfis com suspeita de dados fraudulentos, sem comunicação prévia.</li>
+          <li>As credenciais de acesso são de uso pessoal, exclusivo e intransferível. A Loja isenta-se de qualquer obrigação de indenizar o Usuário por acessos decorrentes do vazamento voluntário ou negligente de suas chaves de login.</li>
+        </ul>
+
+        <h3 id="devolucoes">5. Política Consumerista Simulada (Art. 49 do CDC)</h3>
+        <p>Nas operações reais de e-commerce regulamentadas pelo Código de Defesa do Consumidor (CDC), garante-se o direito de arrependimento (prazo de reflexão de 7 dias). Contudo, em virtude da ausência de liquidação financeira e de entrega física na Loja Peru, o Usuário declara estar ciente de que as políticas de devolução e assistência técnica descritas nas interfaces do site servem meramente como modelagem ilustrativa e não dão causa a direito de exercício material.</p>
+
+        <h3 id="responsabilidades">6. Isenção Geral de Responsabilidade e Fatores Técnicos</h3>
+        <p>Na extensão máxima permitida pela legislação aplicável, a Loja Peru e seus mantenedores/desenvolvedores não assumem responsabilidade civil por:</p>
+        <ul>
+          <li>Instabilidades pontuais de conectividade, interrupções temporárias de servidores ou mau funcionamento causado por serviços de hospedagem de terceiros.</li>
+          <li>Danos decorrentes de <strong>Caso Fortuito ou Força Maior</strong> (Art. 393 do Código Civil), incluindo panes na rede de distribuição de energia elétrica, indisponibilidade global da internet ou greves gerais de transportadoras.</li>
+          <li>Violações cibernéticas de bancos de dados promovidas por ataques criminosos de alta complexidade (hackers/crackers) que superem as medidas protetivas padrão empregadas (como salting e criptografia de senhas em SHA-256), agindo a plataforma estritamente dentro dos parâmetros de diligência esperados.</li>
+        </ul>
+
+        <h3 id="propriedade">7. Direitos de Propriedade Intelectual</h3>
+        <p>Todos os elementos da interface do site, incluindo designs, esquemas de cores, códigos de programação, arquivos vetoriais (SVGs), logotipos e textos contratuais são de propriedade intelectual exclusiva da Loja Peru. A reprodução não autorizada do material sob qualquer pretexto sujeitará o infrator às sanções civis e criminais cabíveis nos termos da Lei de Direitos Autorais (Lei nº 9.610/98).</p>
+
+        <h3 id="foro">8. Legislação de Regência e Foro de Eleição</h3>
+        <p>Este Contrato é regido pelas leis da República Federativa do Brasil, em especial o Código Civil e a Lei de Introdução às Normas do Direito Brasileiro (LINDB).</p>
+        <p>Para dirimir eventuais controvérsias decorrentes da aplicação ou interpretação deste instrumento, as partes elegem, com exclusão de qualquer outro por mais privilegiado que se apresente, o <strong>Foro da Comarca de São Paulo, Estado de São Paulo</strong>.</p>
+      </section>
+    </article>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Loja Peru</h3>
+        <p>A melhor união de vestuário artesanal de luxo e acessórios de tecnologia inovadores. A sua experiência de compra inteligente.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+          <li><a href="/termos.html">Termos de Serviço</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Fale Conosco</h4>
+        <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+        <p>📧 suporte@lojaperu.com.br</p>
+        <p>📞 (11) 99999-8888</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Loja Peru. Todos os direitos reservados. Projeto Demonstrativo.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Gerenciar estado de autenticação no header
+    function updateAccountHeader() {
+      const cliente = JSON.parse(localStorage.getItem('loja_peru_cliente'));
+      const area = document.getElementById('accountHeaderArea');
+      
+      if (cliente && cliente.nome_completo) {
+        const primeiroNome = cliente.nome_completo.split(' ')[0];
+        area.innerHTML = `
+          <a href="/conta.html" class="account-btn account-logged" id="btnHeaderAccount">
+            <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Z"/></svg>
+            <span class="account-user-name">${primeiroNome}</span>
+          </a>
+          <button class="btn-logout" onclick="logoutUser()" title="Sair da conta">Sair</button>
+        `;
+      }
+    }
+
+    function logoutUser() {
+      const token = localStorage.getItem('loja_peru_token');
+      if (token) {
+        fetch('/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': token }
+        }).catch(() => {});
+      }
+      localStorage.removeItem('loja_peru_token');
+      localStorage.removeItem('loja_peru_cliente');
+      location.reload();
+    }
+
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('loja_peru_cart')) || [];
+      const badge = document.getElementById('cartBadgeCount');
+      if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + Number(item.quantidade), 0);
+        badge.textContent = totalItems;
+      }
+    }
+
+    // Gerenciar a navegação ativa no sumário lateral ao rolar a página
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      updateAccountHeader();
+
+      const links = document.querySelectorAll('.doc-nav-link');
+      const headings = document.querySelectorAll('.doc-content h3, #aviso-inicial');
+
+      window.addEventListener('scroll', () => {
+        let currentActive = '';
+        headings.forEach(heading => {
+          const top = heading.offsetTop;
+          if (window.scrollY >= top - 120) {
+            currentActive = heading.getAttribute('id');
+          }
+        });
+
+        if (currentActive) {
+          links.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${currentActive}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

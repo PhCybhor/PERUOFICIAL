@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Conta | Loja Peru</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Crie sua conta na Loja Peru ou faça login para acessar ofertas exclusivas em moda peruana e tecnologia premium.">
+  <meta name="keywords" content="Loja Peru, login, cadastro, minha conta, criar conta, e-commerce peruano">
+  <meta name="author" content="Desenvolvedor Fullstack Sênior">
+
+  <!-- Google Fonts & Stylesheets -->
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    /* ===== CONTA PAGE STYLES ===== */
+
+    .conta-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 65vh;
+      padding: 60px 24px 80px 24px;
+    }
+
+    .conta-card {
+      width: 100%;
+      max-width: 550px;
+      background-color: var(--card-bg);
+      border-radius: var(--border-radius);
+      border: 1px solid rgba(221, 184, 146, 0.4);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      animation: contaSlideUp 0.5s ease-out;
+    }
+
+    @keyframes contaSlideUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Avatar / Icon Area */
+    .conta-avatar {
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red-primary) 100%);
+      padding: 40px 30px 30px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .conta-avatar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 10%, transparent 11%),
+                        radial-gradient(rgba(255,255,255,0.08) 10%, transparent 11%);
+      background-size: 20px 20px;
+      background-position: 0 0, 10px 10px;
+    }
+
+    .conta-avatar-icon {
+      position: relative;
+      z-index: 2;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px auto;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      line-height: 1;
+    }
+
+    .conta-avatar h2 {
+      position: relative;
+      z-index: 2;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .conta-avatar p {
+      position: relative;
+      z-index: 2;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.95rem;
+      font-weight: 300;
+      margin-top: 6px;
+    }
+
+    /* Tab Selector */
+    .conta-tabs {
+      display: flex;
+      gap: 0;
+      padding: 20px 30px 0 30px;
+    }
+
+    .conta-tab-btn {
+      flex: 1;
+      background-color: var(--nude-primary);
+      border: 2px solid var(--nude-dark);
+      padding: 14px;
+      font-family: inherit;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+      color: var(--text-dark);
+    }
+
+    .conta-tab-btn:first-child {
+      border-radius: 10px 0 0 10px;
+      border-right: none;
+    }
+
+    .conta-tab-btn:last-child {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .conta-tab-btn:hover {
+      background-color: var(--nude-dark);
+    }
+
+    .conta-tab-btn.active {
+      border-color: var(--red-primary);
+      background-color: var(--red-light);
+      color: var(--red-primary);
+    }
+
+    /* Form Body */
+    .conta-body {
+      padding: 30px;
+    }
+
+    .conta-form-panel {
+      display: none;
+      animation: contaFadeIn 0.35s ease;
+    }
+
+    .conta-form-panel.active {
+      display: block;
+    }
+
+    @keyframes contaFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Groups */
+    .conta-form-group {
+      margin-bottom: 20px;
+    }
+
+    .conta-form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .conta-form-group .form-control {
+      width: 100%;
+    }
+
+    .conta-form-group .form-control.input-error {
+      border-color: #e53935;
+      background-color: #fff5f5;
+    }
+
+    .conta-form-group .form-control.input-success {
+      border-color: #43a047;
+      background-color: #f1f8e9;
+    }
+
+    /* CPF Validation Indicator */
+    .cpf-feedback {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: var(--transition);
+      min-height: 20px;
+    }
+
+    .cpf-feedback.valid {
+      color: #2e7d32;
+    }
+
+    .cpf-feedback.invalid {
+      color: #c62828;
+    }
+
+    /* Password Strength Bar */
+    .password-strength-wrapper {
+      margin-top: 8px;
+    }
+
+    .password-strength-bar {
+      width: 100%;
+      height: 4px;
+      background-color: var(--nude-primary);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .password-strength-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 4px;
+      transition: width 0.4s ease, background-color 0.4s ease;
+    }
+
+    .password-strength-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 4px;
+      transition: var(--transition);
+      min-height: 18px;
+    }
+
+    /* Form Row 2 Cols */
+    .conta-form-row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    /* Submit Button */
+    .conta-submit-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background-color: var(--red-primary);
+      color: var(--text-light);
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: var(--transition);
+      box-shadow: 0 4px 15px rgba(200, 16, 46, 0.2);
+    }
+
+    .conta-submit-btn:hover {
+      background-color: var(--red-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(200, 16, 46, 0.3);
+    }
+
+    .conta-submit-btn:disabled {
+      background-color: var(--nude-dark);
+      color: var(--text-muted);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .conta-submit-btn .btn-spinner {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-top-color: #fff;
+      border-radius: 50%;
+      animation: contaSpin 0.6s linear infinite;
+    }
+
+    .conta-submit-btn.loading .btn-spinner {
+      display: inline-block;
+    }
+
+    .conta-submit-btn.loading .btn-label {
+      display: none;
+    }
+
+    @keyframes contaSpin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Switch Link */
+    .conta-switch-link {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .conta-switch-link a {
+      color: var(--red-primary);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .conta-switch-link a:hover {
+      color: var(--red-dark);
+      text-decoration: underline;
+    }
+
+    /* Error Message */
+    .conta-error-msg {
+      background-color: #ffebee;
+      border: 1px solid #ef9a9a;
+      color: #c62828;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      display: none;
+      animation: contaFadeIn 0.3s ease;
+    }
+
+    /* Divider */
+    .conta-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 24px 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .conta-divider::before,
+    .conta-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background-color: var(--nude-primary);
+    }
+
+    /* Toast */
+    .conta-toast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 16px 28px;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: white;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 3000;
+      transform: translateY(100px);
+      transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    .conta-toast.success {
+      background: linear-gradient(135deg, #43a047, #2e7d32);
+    }
+
+    .conta-toast.error {
+      background: linear-gradient(135deg, #e53935, #c62828);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .conta-section {
+        padding: 30px 16px 60px 16px;
+      }
+
+      .conta-card {
+        border-radius: 12px;
+      }
+
+      .conta-avatar {
+        padding: 30px 20px 24px 20px;
+      }
+
+      .conta-avatar h2 {
+        font-size: 1.25rem;
+      }
+
+      .conta-tabs {
+        padding: 16px 20px 0 20px;
+      }
+
+      .conta-body {
+        padding: 24px 20px;
+      }
+
+      .conta-form-row-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .conta-toast {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABEÇALHO (Logo, Menu e Carrinho) -->
+  <header class="header" id="mainHeader">
+    <div class="header-container">
+      <a href="/" class="logo" id="logoLink">
+        <div class="peru-flag">
+          <div class="peru-flag-red"></div>
+          <div class="peru-flag-white"></div>
+          <div class="peru-flag-red"></div>
+        </div>
+        Loja <span>Peru</span>
+      </a>
+      
+      <nav aria-label="Navegação Principal">
+        <ul class="nav-links">
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+        </ul>
+      </nav>
+      
+      <a href="/carrinho.html" class="cart-icon-container" id="cartButton" aria-label="Visualizar Carrinho">
+        <img src="/images/cart_icon.png" class="cart-icon" alt="">
+        <span>Carrinho</span>
+        <div class="cart-count" id="cartBadgeCount">0</div>
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT: AUTH SECTIONS (LOGIN/REGISTER) -->
+  <main class="conta-section" id="authContainer" style="display: none;">
+    <div class="conta-card">
+
+      <!-- Avatar / Icon Header -->
+      <div class="conta-avatar">
+        <div class="conta-avatar-icon">👤</div>
+        <h2>Minha Conta</h2>
+        <p>Acesse ou crie sua conta na Loja Peru</p>
+      </div>
+
+      <!-- Tab Buttons -->
+      <div class="conta-tabs">
+        <button class="conta-tab-btn active" data-tab="cadastro" id="tabCadastro">
+          📝 Cadastro
+        </button>
+        <button class="conta-tab-btn" data-tab="login" id="tabLogin">
+          🔑 Entrar
+        </button>
+      </div>
+
+      <div class="conta-body">
+
+        <!-- ========== CADASTRO PANEL ========== -->
+        <div class="conta-form-panel active" id="panelCadastro">
+          <div class="conta-error-msg" id="cadastroError"></div>
+
+          <form id="formCadastro" novalidate>
+            <div class="conta-form-group">
+              <label for="cadNome">Nome Completo</label>
+              <input type="text" id="cadNome" class="form-control" placeholder="Seu nome completo" required autocomplete="name">
+            </div>
+
+            <div class="conta-form-group">
+              <label for="cadEmail">E-mail</label>
+              <input type="email" id="cadEmail" class="form-control" placeholder="seu@email.com" required autocomplete="email">
+            </div>
+
+            <div class="conta-form-row-2">
+              <div class="conta-form-group">
+                <label for="cadCpf">CPF</label>
+                <input type="text" id="cadCpf" class="form-control" placeholder="000.000.000-00" maxlength="14" required inputmode="numeric" autocomplete="off">
+                <div class="cpf-feedback" id="cpfFeedback"></div>
+              </div>
+
+              <div class="conta-form-group">
+                <label for="cadTelefone">Telefone</label>
+                <input type="text" id="cadTelefone" class="form-control" placeholder="(00) 00000-0000" maxlength="15" required inputmode="tel" autocomplete="tel">
+              </div>
+            </div>
+
+            <div class="conta-form-group">
+              <label for="cadSenha">Senha</label>
+              <input type="password" id="cadSenha" class="form-control" placeholder="Mínimo 6 caracteres" required minlength="6" autocomplete="new-password">
+              <div class="password-strength-wrapper">
+                <div class="password-strength-bar">
+                  <div class="password-strength-fill" id="strengthFill"></div>
+                </div>
+                <div class="password-strength-label" id="strengthLabel"></div>
+              </div>
+            </div>
+
+            <div class="conta-form-group">
+              <label for="cadConfirmSenha">Confirmar Senha</label>
+              <input type="password" id="cadConfirmSenha" class="form-control" placeholder="Repita sua senha" required autocomplete="new-password">
+            </div>
+
+            <button type="submit" class="conta-submit-btn" id="btnCadastro">
+              <span class="btn-spinner"></span>
+              <span class="btn-label">Criar Minha Conta</span>
+            </button>
+          </form>
+
+          <div class="conta-divider">ou</div>
+
+          <div class="conta-switch-link">
+            Já tem uma conta? <a id="switchToLogin">Entre aqui</a>
+          </div>
+        </div>
+
+        <!-- ========== LOGIN PANEL ========== -->
+        <div class="conta-form-panel" id="panelLogin">
+          <div class="conta-error-msg" id="loginError"></div>
+
+          <form id="formLogin" novalidate>
+            <div class="conta-form-group">
+              <label for="loginEmail">E-mail</label>
+              <input type="email" id="loginEmail" class="form-control" placeholder="seu@email.com" required autocomplete="email">
+            </div>
+
+            <div class="conta-form-group">
+              <label for="loginSenha">Senha</label>
+              <input type="password" id="loginSenha" class="form-control" placeholder="Sua senha" required autocomplete="current-password">
+            </div>
+
+            <button type="submit" class="conta-submit-btn" id="btnLogin">
+              <span class="btn-spinner"></span>
+              <span class="btn-label">Entrar na Minha Conta</span>
+            </button>
+          </form>
+
+          <div class="conta-divider">ou</div>
+
+          <div class="conta-switch-link">
+            Não tem conta? <a id="switchToCadastro">Cadastre-se</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- MAIN CONTENT: PAINEL DO CLIENTE (DASHBOARD) -->
+  <main class="dashboard-layout" id="dashboardContainer" style="display: none;">
+    <!-- Lateral: Informações do Cliente -->
+    <aside class="dashboard-sidebar">
+      <div class="user-avatar">👤</div>
+      <h3 id="sidebarClientName">Carregando...</h3>
+      <p class="user-email-muted" id="sidebarClientEmail">...</p>
+      
+      <ul class="dashboard-nav-list">
+        <li class="dashboard-nav-item">
+          <button class="dashboard-nav-btn active" id="btnDashboardOrders" onclick="switchDashboardTab('orders')">
+            📦 Meus Pedidos
+          </button>
+        </li>
+        <li class="dashboard-nav-item">
+          <button class="dashboard-nav-btn" id="btnDashboardProfile" onclick="switchDashboardTab('profile')">
+            👤 Meus Dados
+          </button>
+        </li>
+      </ul>
+      
+      <button class="btn-sidebar-logout" onclick="logoutUser()">Sair da Conta</button>
+    </aside>
+
+    <!-- Conteúdo Principal do Painel -->
+    <section class="dashboard-content-panel">
+      <!-- Aba: Meus Pedidos -->
+      <div id="dashboardTabOrders" class="dashboard-tab-content" style="display: block;">
+        <h2>Meus Pedidos</h2>
+        <p class="panel-description">Acompanhe o status e histórico de todas as suas compras realizadas na Loja Peru.</p>
+        
+        <div id="clientOrdersContainer">
+          <div style="text-align: center; padding: 40px; color: var(--text-muted);">
+            Carregando seus pedidos...
+          </div>
+        </div>
+      </div>
+
+      <!-- Aba: Meus Dados -->
+      <div id="dashboardTabProfile" class="dashboard-tab-content" style="display: none;">
+        <h2>Meus Dados</h2>
+        <p class="panel-description">Confira as informações cadastradas da sua conta.</p>
+        
+        <div class="dashboard-profile-info">
+          <div class="profile-info-item">
+            <span class="info-label">Nome Completo</span>
+            <span class="info-value" id="profileName">...</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="info-label">E-mail</span>
+            <span class="info-value" id="profileEmail">...</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="info-label">CPF</span>
+            <span class="info-value" id="profileCpf">...</span>
+          </div>
+          <div class="profile-info-item">
+            <span class="info-label">Telefone</span>
+            <span class="info-value" id="profilePhone">...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer" id="mainFooter">
+    <div class="footer-container">
+      <div class="footer-info">
+        <h3>Loja Peru</h3>
+        <p>A melhor união de vestuário artesanal de luxo e acessórios de tecnologia inovadores. A sua experiência de compra inteligente.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Links Úteis</h4>
+        <ul>
+          <li><a href="/">Vitrine</a></li>
+          <li><a href="/carrinho.html">Meu Carrinho</a></li>
+          <li><a href="/termos.html">Termos de Serviço</a></li>
+          <li><a href="/privacidade.html">Política de Privacidade</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Fale Conosco</h4>
+        <p>📍 Av. Paulista, 1000 - São Paulo, SP</p>
+        <p>📧 suporte@lojaperu.com.br</p>
+        <p>📞 (11) 99999-8888</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Loja Peru. Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="conta-toast" id="contaToast"></div>
+
+  <!-- SCRIPTS -->
+  <script>
+    // ===================================================================
+    // DASHBOARD & AUTH TIMELINE FUNCTIONS
+    // ===================================================================
+    function initContaPage() {
+      const token = localStorage.getItem('loja_peru_token');
+      const cliente = JSON.parse(localStorage.getItem('loja_peru_cliente'));
+      
+      const authContainer = document.getElementById('authContainer');
+      const dashboardContainer = document.getElementById('dashboardContainer');
+      
+      if (token && cliente) {
+        authContainer.style.display = 'none';
+        dashboardContainer.style.display = 'grid';
+        
+        document.getElementById('sidebarClientName').textContent = cliente.nome_completo || 'Cliente';
+        document.getElementById('sidebarClientEmail').textContent = cliente.email || '';
+        
+        document.getElementById('profileName').textContent = cliente.nome_completo || '';
+        document.getElementById('profileEmail').textContent = cliente.email || '';
+        document.getElementById('profileCpf').textContent = formatCPF(cliente.cpf || '');
+        document.getElementById('profilePhone').textContent = formatPhone(cliente.telefone || '');
+        
+        loadClientOrders();
+      } else {
+        authContainer.style.display = 'flex';
+        dashboardContainer.style.display = 'none';
+      }
+    }
+
+    function formatCPF(cpf) {
+      cpf = cpf.replace(/\D/g, '');
+      if (cpf.length !== 11) return cpf;
+      return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+    }
+
+    function formatPhone(phone) {
+      phone = phone.replace(/\D/g, '');
+      if (phone.length < 10) return phone;
+      if (phone.length === 11) {
+        return phone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+      }
+      return phone.replace(/(\d{2})(\d{4})(\d{4})/, '($1) $2-$3');
+    }
+
+    function logoutUser() {
+      const token = localStorage.getItem('loja_peru_token');
+      if (token) {
+        fetch('/auth/logout', {
+          method: 'POST',
+          headers: { 'Authorization': token }
+        }).catch(() => {});
+      }
+      localStorage.removeItem('loja_peru_token');
+      localStorage.removeItem('loja_peru_cliente');
+      location.reload();
+    }
+
+    async function loadClientOrders() {
+      const token = localStorage.getItem('loja_peru_token');
+      const container = document.getElementById('clientOrdersContainer');
+      if (!token) return;
+
+      try {
+        const response = await fetch('/auth/me/pedidos', {
+          headers: { 'Authorization': token }
+        });
+        
+        if (response.status === 401) {
+          logoutUser();
+          return;
+        }
+        
+        if (!response.ok) throw new Error('Erro ao obter seus pedidos');
+        
+        const orders = await response.json();
+        
+        if (orders.length === 0) {
+          container.innerHTML = `
+            <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
+              <div style="font-size: 3rem; margin-bottom: 15px;">📦</div>
+              <h3>Você ainda não fez nenhum pedido</h3>
+              <p style="margin-top: 8px;">Assim que realizar uma compra, ela aparecerá aqui para você acompanhar.</p>
+              <a href="/" class="conta-submit-btn" style="display: inline-block; margin-top: 20px; text-decoration: none; padding: 12px 24px; text-align: center; width: auto; max-width: 200px;">Ir para Vitrine</a>
+            </div>
+          `;
+          return;
+        }
+        
+        container.innerHTML = '';
+        
+        orders.forEach(order => {
+          const formattedPrice = Number(order.total || 0).toLocaleString('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          });
+          
+          const orderDate = new Date(order.criado_em).toLocaleDateString('pt-BR', {
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
+          
+          const isApproved = order.status === 'Aprovado';
+          const isPreparing = order.status === 'Em Preparação';
+          const isTransit = order.status === 'Em Trânsito';
+          const isDelivered = order.status === 'Entregue';
+          
+          let statusIcon = '🟡';
+          let statusClass = 'pending';
+          
+          if (isApproved) {
+            statusIcon = '🟢';
+            statusClass = 'approved';
+          } else if (isPreparing) {
+            statusIcon = '👨‍🍳';
+            statusClass = 'preparing';
+          } else if (isTransit) {
+            statusIcon = '🚚';
+            statusClass = 'transit';
+          } else if (isDelivered) {
+            statusIcon = '✅';
+            statusClass = 'delivered';
+          }
+          
+          const card = document.createElement('div');
+          card.className = 'order-card expanded';
+          card.style.marginBottom = '25px';
+          
+          card.innerHTML = `
+            <div class="order-card-header" style="cursor: default;">
+              <span class="order-id-badge">#${order.id}</span>
+              <div class="order-client-info">
+                <span class="order-client-name">${order.produto_nome || 'Produto'}</span>
+                <span class="order-client-cpf">${orderDate}</span>
+              </div>
+              <span class="order-total">${formattedPrice}</span>
+              <span class="order-status-badge ${statusClass}">${statusIcon} ${order.status || 'Pendente'}</span>
+            </div>
+            
+            <div class="order-card-details" style="display: block;">
+              <!-- Linha do Tempo de Rastreamento (Timeline) -->
+              ${renderTimeline(order.status)}
+              
+              <div class="order-details-grid" style="margin-top: 25px;">
+                <div class="order-detail-block">
+                  <h4>📦 Produto</h4>
+                  <p><strong>${order.produto_nome || 'Produto'}</strong></p>
+                  <p>Quantidade: <span class="detail-highlight">${order.quantidade || 1}</span></p>
+                  <p>Total: <span class="detail-highlight">${formattedPrice}</span></p>
+                </div>
+                <div class="order-detail-block">
+                  <h4>📍 Endereço de Entrega</h4>
+                  <p>${order.rua || 'N/I'}, Nº ${order.numero || 'S/N'}</p>
+                  <p>${order.complemento ? 'Compl: ' + order.complemento : ''}</p>
+                  <p>CEP: <span class="detail-highlight">${order.cep || 'N/I'}</span></p>
+                  ${order.referencia ? `<p style="margin-top: 8px;"><strong>Referência:</strong> ${order.referencia}</p>` : ''}
+                </div>
+              </div>
+            </div>
+          `;
+          
+          container.appendChild(card);
+        });
+        
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = `
+          <div style="text-align: center; padding: 40px; color: var(--red-primary);">
+            ⚠️ Erro ao carregar seus pedidos. Tente novamente mais tarde.
+          </div>
+        `;
+      }
+    }
+
+    function renderTimeline(status) {
+      let progressWidth = '0%';
+      let step1 = 'completed'; // Recebido is always completed
+      let step2 = '';
+      let step3 = '';
+      let step4 = '';
+      let step5 = '';
+      
+      if (status === 'Pendente') {
+        progressWidth = '0%';
+        step1 = 'active';
+      } else if (status === 'Aprovado') {
+        progressWidth = '25%';
+        step1 = 'completed';
+        step2 = 'active';
+      } else if (status === 'Em Preparação') {
+        progressWidth = '50%';
+        step1 = 'completed';
+        step2 = 'completed';
+        step3 = 'active';
+      } else if (status === 'Em Trânsito') {
+        progressWidth = '75%';
+        step1 = 'completed';
+        step2 = 'completed';
+        step3 = 'completed';
+        step4 = 'active';
+      } else if (status === 'Entregue') {
+        progressWidth = '100%';
+        step1 = 'completed';
+        step2 = 'completed';
+        step3 = 'completed';
+        step4 = 'completed';
+        step5 = 'completed';
+      }
+      
+      return `
+        <div class="order-timeline">
+          <div class="order-timeline-progress" style="width: ${progressWidth};"></div>
+          
+          <div class="timeline-step ${step1}">
+            <div class="step-icon">📝</div>
+            <div class="step-label">Recebido</div>
+          </div>
+          <div class="timeline-step ${step2}">
+            <div class="step-icon">💳</div>
+            <div class="step-label">Aprovado</div>
+          </div>
+          <div class="timeline-step ${step3}">
+            <div class="step-icon">👨‍🍳</div>
+            <div class="step-label">Preparando</div>
+          </div>
+          <div class="timeline-step ${step4}">
+            <div class="step-icon">🚚</div>
+            <div class="step-label">Em Trânsito</div>
+          </div>
+          <div class="timeline-step ${step5}">
+            <div class="step-icon">🎁</div>
+            <div class="step-label">Entregue</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchDashboardTab(tab) {
+      const btnOrders = document.getElementById('btnDashboardOrders');
+      const btnProfile = document.getElementById('btnDashboardProfile');
+      const tabOrders = document.getElementById('dashboardTabOrders');
+      const tabProfile = document.getElementById('dashboardTabProfile');
+      
+      if (tab === 'orders') {
+        btnOrders.classList.add('active');
+        btnProfile.classList.remove('active');
+        tabOrders.style.display = 'block';
+        tabProfile.style.display = 'none';
+        loadClientOrders();
+      } else {
+        btnProfile.classList.add('active');
+        btnOrders.classList.remove('active');
+        tabProfile.style.display = 'block';
+        tabOrders.style.display = 'none';
+      }
+    }
+
+    // ===================================================================
+    // CART BADGE
+    // ===================================================================
+    function updateCartBadge() {
+      const cart = JSON.parse(localStorage.getItem('loja_peru_cart')) || [];
+      const totalItems = cart.reduce((sum, item) => sum + item.quantidade, 0);
+      const badge = document.getElementById('cartBadgeCount');
+      badge.textContent = totalItems;
+      badge.style.transform = 'scale(1.3)';
+      setTimeout(() => { badge.style.transform = 'scale(1)'; }, 200);
+    }
+
+    // ===================================================================
+    // TOAST NOTIFICATION
+    // ===================================================================
+    function showContaToast(message, type = 'success') {
+      const toast = document.getElementById('contaToast');
+      toast.textContent = message;
+      toast.className = 'conta-toast ' + type;
+      toast.style.display = 'block';
+      setTimeout(() => { toast.style.transform = 'translateY(0)'; }, 50);
+      setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        setTimeout(() => { toast.style.display = 'none'; }, 400);
+      }, 3000);
+    }
+
+    // ===================================================================
+    // TAB SWITCHING
+    // ===================================================================
+    const tabCadastro = document.getElementById('tabCadastro');
+    const tabLogin = document.getElementById('tabLogin');
+    const panelCadastro = document.getElementById('panelCadastro');
+    const panelLogin = document.getElementById('panelLogin');
+
+    function switchToTab(tab) {
+      if (tab === 'cadastro') {
+        tabCadastro.classList.add('active');
+        tabLogin.classList.remove('active');
+        panelCadastro.classList.add('active');
+        panelLogin.classList.remove('active');
+      } else {
+        tabLogin.classList.add('active');
+        tabCadastro.classList.remove('active');
+        panelLogin.classList.add('active');
+        panelCadastro.classList.remove('active');
+      }
+      // Clear errors on tab switch
+      document.getElementById('cadastroError').style.display = 'none';
+      document.getElementById('loginError').style.display = 'none';
+    }
+
+    tabCadastro.addEventListener('click', () => switchToTab('cadastro'));
+    tabLogin.addEventListener('click', () => switchToTab('login'));
+    document.getElementById('switchToLogin').addEventListener('click', () => switchToTab('login'));
+    document.getElementById('switchToCadastro').addEventListener('click', () => switchToTab('cadastro'));
+
+    // ===================================================================
+    // CPF MASK
+    // ===================================================================
+    const cadCpf = document.getElementById('cadCpf');
+    cadCpf.addEventListener('input', function (e) {
+      let value = this.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.substring(0, 11);
+
+      if (value.length > 9) {
+        value = value.replace(/(\d{3})(\d{3})(\d{3})(\d{1,2})/, '$1.$2.$3-$4');
+      } else if (value.length > 6) {
+        value = value.replace(/(\d{3})(\d{3})(\d{1,3})/, '$1.$2.$3');
+      } else if (value.length > 3) {
+        value = value.replace(/(\d{3})(\d{1,3})/, '$1.$2');
+      }
+
+      this.value = value;
+      validateCPFInput();
+    });
+
+    // ===================================================================
+    // CPF VALIDATION (Official Brazilian Algorithm)
+    // ===================================================================
+    function validarCPF(cpf) {
+      cpf = cpf.replace(/\D/g, '');
+      if (cpf.length !== 11) return false;
+      if (/^(\d)\1{10}$/.test(cpf)) return false;
+      let soma = 0;
+      for (let i = 0; i < 9; i++) soma += parseInt(cpf.charAt(i)) * (10 - i);
+      let resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf.charAt(9))) return false;
+      soma = 0;
+      for (let i = 0; i < 10; i++) soma += parseInt(cpf.charAt(i)) * (11 - i);
+      resto = (soma * 10) % 11;
+      if (resto === 10 || resto === 11) resto = 0;
+      if (resto !== parseInt(cpf.charAt(10))) return false;
+      return true;
+    }
+
+    function validateCPFInput() {
+      const rawCpf = cadCpf.value.replace(/\D/g, '');
+      const feedback = document.getElementById('cpfFeedback');
+
+      if (rawCpf.length === 0) {
+        feedback.textContent = '';
+        feedback.className = 'cpf-feedback';
+        cadCpf.classList.remove('input-error', 'input-success');
+        return;
+      }
+
+      if (rawCpf.length < 11) {
+        feedback.textContent = 'Digite os 11 dígitos do CPF';
+        feedback.className = 'cpf-feedback';
+        cadCpf.classList.remove('input-error', 'input-success');
+        return;
+      }
+
+      if (validarCPF(rawCpf)) {
+        feedback.textContent = '✓ CPF válido';
+        feedback.className = 'cpf-feedback valid';
+        cadCpf.classList.remove('input-error');
+        cadCpf.classList.add('input-success');
+      } else {
+        feedback.textContent = '✗ CPF inválido';
+        feedback.className = 'cpf-feedback invalid';
+        cadCpf.classList.remove('input-success');
+        cadCpf.classList.add('input-error');
+      }
+    }
+
+    // ===================================================================
+    // PHONE MASK
+    // ===================================================================
+    const cadTelefone = document.getElementById('cadTelefone');
+    cadTelefone.addEventListener('input', function () {
+      let value = this.value.replace(/\D/g, '');
+      if (value.length > 11) value = value.substring(0, 11);
+
+      if (value.length > 6) {
+        value = value.replace(/(\d{2})(\d{5})(\d{1,4})/, '($1) $2-$3');
+      } else if (value.length > 2) {
+        value = value.replace(/(\d{2})(\d{1,5})/, '($1) $2');
+      } else if (value.length > 0) {
+        value = value.replace(/(\d{1,2})/, '($1');
+      }
+
+      this.value = value;
+    });
+
+    // ===================================================================
+    // PASSWORD STRENGTH INDICATOR
+    // ===================================================================
+    const cadSenha = document.getElementById('cadSenha');
+    const strengthFill = document.getElementById('strengthFill');
+    const strengthLabel = document.getElementById('strengthLabel');
+
+    cadSenha.addEventListener('input', function () {
+      const val = this.value;
+
+      if (val.length === 0) {
+        strengthFill.style.width = '0%';
+        strengthFill.style.backgroundColor = 'transparent';
+        strengthLabel.textContent = '';
+        strengthLabel.style.color = 'transparent';
+        return;
+      }
+
+      const hasUpper = /[A-Z]/.test(val);
+      const hasLower = /[a-z]/.test(val);
+      const hasNumber = /[0-9]/.test(val);
+
+      if (val.length < 6) {
+        strengthFill.style.width = '30%';
+        strengthFill.style.backgroundColor = '#e53935';
+        strengthLabel.textContent = 'Fraca';
+        strengthLabel.style.color = '#e53935';
+      } else if (val.length >= 8 && hasUpper && hasLower && hasNumber) {
+        strengthFill.style.width = '100%';
+        strengthFill.style.backgroundColor = '#43a047';
+        strengthLabel.textContent = 'Forte';
+        strengthLabel.style.color = '#43a047';
+      } else {
+        strengthFill.style.width = '60%';
+        strengthFill.style.backgroundColor = '#fb8c00';
+        strengthLabel.textContent = 'Média';
+        strengthLabel.style.color = '#fb8c00';
+      }
+    });
+
+    // ===================================================================
+    // SHOW ERROR HELPER
+    // ===================================================================
+    function showError(elementId, message) {
+      const el = document.getElementById(elementId);
+      el.textContent = message;
+      el.style.display = 'block';
+    }
+
+    function hideError(elementId) {
+      document.getElementById(elementId).style.display = 'none';
+    }
+
+    function setLoading(btnId, loading) {
+      const btn = document.getElementById(btnId);
+      if (loading) {
+        btn.classList.add('loading');
+        btn.disabled = true;
+      } else {
+        btn.classList.remove('loading');
+        btn.disabled = false;
+      }
+    }
+
+    // ===================================================================
+    // CADASTRO SUBMIT
+    // ===================================================================
+    document.getElementById('formCadastro').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      hideError('cadastroError');
+
+      const nome_completo = document.getElementById('cadNome').value.trim();
+      const email = document.getElementById('cadEmail').value.trim();
+      const cpf = document.getElementById('cadCpf').value.trim();
+      const telefone = document.getElementById('cadTelefone').value.trim();
+      const senha = document.getElementById('cadSenha').value;
+      const confirmSenha = document.getElementById('cadConfirmSenha').value;
+
+      // Validate fields
+      if (!nome_completo || !email || !cpf || !telefone || !senha || !confirmSenha) {
+        showError('cadastroError', 'Por favor, preencha todos os campos.');
+        return;
+      }
+
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError('cadastroError', 'Por favor, insira um e-mail válido.');
+        return;
+      }
+
+      // Validate CPF
+      const rawCpf = cpf.replace(/\D/g, '');
+      if (!validarCPF(rawCpf)) {
+        showError('cadastroError', 'CPF inválido. Verifique o número informado.');
+        return;
+      }
+
+      // Validate phone
+      const rawPhone = telefone.replace(/\D/g, '');
+      if (rawPhone.length < 10) {
+        showError('cadastroError', 'Telefone inválido. Informe DDD + número.');
+        return;
+      }
+
+      // Validate password
+      if (senha.length < 6) {
+        showError('cadastroError', 'A senha deve ter no mínimo 6 caracteres.');
+        return;
+      }
+
+      // Validate password match
+      if (senha !== confirmSenha) {
+        showError('cadastroError', 'As senhas não coincidem.');
+        return;
+      }
+
+      setLoading('btnCadastro', true);
+
+      try {
+        const response = await fetch('/auth/cadastro', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome_completo, email, cpf: rawCpf, telefone: rawPhone, senha })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || data.erro || 'Erro ao criar conta.');
+        }
+
+        // Store token and client data
+        localStorage.setItem('loja_peru_token', data.token);
+        localStorage.setItem('loja_peru_cliente', JSON.stringify(data.cliente));
+
+        showContaToast('Conta criada com sucesso! Redirecionando... ✨', 'success');
+
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1500);
+
+      } catch (error) {
+        showError('cadastroError', error.message);
+        setLoading('btnCadastro', false);
+      }
+    });
+
+    // ===================================================================
+    // LOGIN SUBMIT
+    // ===================================================================
+    document.getElementById('formLogin').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      hideError('loginError');
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const senha = document.getElementById('loginSenha').value;
+
+      if (!email || !senha) {
+        showError('loginError', 'Por favor, preencha todos os campos.');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        showError('loginError', 'Por favor, insira um e-mail válido.');
+        return;
+      }
+
+      setLoading('btnLogin', true);
+
+      try {
+        const response = await fetch('/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, senha })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.message || data.erro || 'E-mail ou senha incorretos.');
+        }
+
+        // Store token and client data
+        localStorage.setItem('loja_peru_token', data.token);
+        localStorage.setItem('loja_peru_cliente', JSON.stringify(data.cliente));
+
+        showContaToast('Login realizado com sucesso! 🎉', 'success');
+
+        setTimeout(() => {
+          window.location.href = '/';
+        }, 1500);
+
+      } catch (error) {
+        showError('loginError', error.message);
+        setLoading('btnLogin', false);
+      }
+    });
+
+    // ===================================================================
+    // INIT
+    // ===================================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      updateCartBadge();
+      initContaPage();
+    });
+
+    // Esconder header ao rolar para baixo no celular
+    (function() {
+      let lastScrollY = window.scrollY;
+      const header = document.getElementById('mainHeader');
+      if (!header) return;
+
+      window.addEventListener('scroll', () => {
+        if (window.innerWidth <= 768) {
+          const currentScrollY = window.scrollY;
+          if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('header-hidden');
+          } else {
+            header.classList.remove('header-hidden');
+          }
+          lastScrollY = currentScrollY;
+        } else {
+          header.classList.remove('header-hidden');
+        }
+      }, { passive: true });
+    })();
+  </script>
+</body>
+</html>
